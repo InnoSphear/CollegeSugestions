@@ -1,289 +1,132 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { HiMenu, HiX } from "react-icons/hi";
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FiMenu, FiX, FiUser, FiSearch, FiHome, FiInfo, FiMail } from 'react-icons/fi';
+import { GraduationCap } from 'lucide-react';
 
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isDropdownOpenDental, setIsDropdownOpenDental] = useState(false);
-  const [isDropdownOpenPharma, setIsDropdownOpenPharma] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  let leaveTimeout = null;
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const navigation = [
+    { name: 'Home', href: '/', icon: FiHome },
+    { name: 'Search Colleges', href: '/search', icon: FiSearch },
+    { name: 'About', href: '/about', icon: FiInfo },
+    { name: 'Contact', href: '/contact', icon: FiMail },
+  ];
+
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-sm fixed w-full top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 py-4 flex items-center justify-between">
-        {/* ✅ Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="https://mededu.info/wp-content/uploads/elementor/thumbs/Screenshot-2024-06-16-111756_processed-qthcyh12m8ajk7wa1cui925p7d7434ve3ulwjhfaio.png"
-            alt="logo"
-            className="lg:ml-16 w-28 sm:w-32 md:w-36"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-          <Link to="/" className="hover:text-blue-500 transition-colors">
-            Home
-          </Link>
-
-          {/* Medical Dropdown */}
-          <div
-            className="relative group"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => {
-              leaveTimeout = setTimeout(() => {
-                setIsDropdownOpen(false);
-              }, 1000);
-            }}
-          >
-            <button className="hover:text-blue-500 flex items-center gap-1">
-              Medical
-              <RiArrowDropDownLine
-                className={`text-2xl transition-transform ${
-                  isDropdownOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {/* Dropdown */}
-            {isDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded-md border border-gray-200 z-50">
-                <Link
-                  to="/toptengov"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
-                >
-                  Top 10 Government Colleges in India
-                </Link>
-                <Link
-                  to="/toptenpvt"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
-                >
-                  Top 10 Private Colleges in India
-                </Link>
-              </div>
-            )}
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2">
+              <GraduationCap className="h-8 w-8 text-blue-600" />
+              <span className="font-bold text-xl text-gray-900">CollegeSuggest</span>
+            </Link>
           </div>
 
-          {/* Dental Dropdown */}
-          <div
-            className="relative group"
-            onMouseEnter={() => setIsDropdownOpenDental(true)}
-              onMouseLeave={() => {
-              leaveTimeout = setTimeout(() => {
-                setIsDropdownOpenDental(false);
-              }, 1000);
-            }}
-          >
-            <button className="hover:text-blue-500 flex items-center gap-1">
-              Dental
-              <RiArrowDropDownLine
-                className={`text-2xl transition-transform ${
-                  isDropdownOpenDental ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {isDropdownOpenDental && (
-              <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded-md border border-gray-200 z-50">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => {
+              const Icon = item.icon;
+              return (
                 <Link
-                  to="/dental/government"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
+                  key={item.name}
+                  to={item.href}
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                    isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                  }`}
                 >
-                  Top 10 Government Colleges in India
+                  <Icon className="h-4 w-4" />
+                  <span>{item.name}</span>
                 </Link>
-                <Link
-                  to="/dental/private"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
-                >
-                  Top 10 Private Colleges in India
-                </Link>
-              </div>
-            )}
+              );
+            })}
           </div>
 
-          {/* ✅ Pharma Dropdown */}
-          <div
-            className="relative group"
-            onMouseEnter={() => setIsDropdownOpenPharma(true)}
-              onMouseLeave={() => {
-              leaveTimeout = setTimeout(() => {
-                setIsDropdownOpenPharma(false);
-              }, 1000);
-            }}
-          >
-            <button className="hover:text-blue-500 flex items-center gap-1">
-              Pharma
-              <RiArrowDropDownLine
-                className={`text-2xl transition-transform ${
-                  isDropdownOpenPharma ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </button>
-            {isDropdownOpenPharma && (
-              <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded-md border border-gray-200 z-50">
-                <Link
-                  to="/pharma/government"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
-                >
-                  Top 10 Government Colleges in India
-                </Link>
-                <Link
-                  to="/pharma/private"
-                  className="block px-4 py-2 hover:bg-blue-100 transition"
-                >
-                  Top 10 Private Colleges in India
-                </Link>
-              </div>
-            )}
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Link
+              to="/login"
+              className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            >
+              Sign Up
+            </Link>
+            <Link
+              to="/profile"
+              className="text-gray-700 hover:text-blue-600 p-2 rounded-md transition-colors duration-200"
+            >
+              <FiUser className="h-5 w-5" />
+            </Link>
           </div>
-        </div>
 
-        {/* ✅ Sign In / Sign Up (always visible on desktop & tablet) */}
-        <div className="hidden md:flex space-x-3 lg:mr-16">
-          <Link
-            to="/signin"
-            className="border bg-[rgb(9,30,68)] text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition"
-          >
-            Sign In
-          </Link>
-          <Link
-            to="/signup"
-            className="bg-[rgb(223,225,230)] text-black px-4 py-2 rounded-lg hover:bg-gray-300 transition"
-          >
-            Sign Up
-          </Link>
-        </div>
-
-        {/* ✅ Mobile Hamburger Button */}
-        <div className="lg:hidden flex items-center">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? (
-              <HiX className="text-3xl" />
-            ) : (
-              <HiMenu className="text-3xl" />
-            )}
-          </button>
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600 p-2"
+            >
+              {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* ✅ Mobile/Tablet Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white shadow-md border-t w-full">
-          <div className="flex flex-col space-y-2 p-4">
-            <Link to="/" className="py-2 hover:text-blue-500">
-              Home
-            </Link>
-
-            {/* 📱 Mobile Medical Dropdown */}
-            <div>
-              <button
-                className="flex justify-between items-center w-full py-2 hover:text-blue-500"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
-                Medical
-                <RiArrowDropDownLine
-                  className={`text-xl transition-transform ${
-                    isDropdownOpen ? "rotate-180" : "rotate-0"
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+            {navigation.map((item) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                    isActive(item.href)
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                   }`}
-                />
-              </button>
-              {isDropdownOpen && (
-                <div className="pl-4">
-                  <Link
-                    to="/medical/government"
-                    className="block py-1 text-gray-600"
-                  >
-                    Govt Colleges
-                  </Link>
-                  <Link
-                    to="/medical/private"
-                    className="block py-1 text-gray-600"
-                  >
-                    Private Colleges
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* 📱 Mobile Dental Dropdown */}
-            <div>
-              <button
-                className="flex justify-between items-center w-full py-2 hover:text-blue-500"
-                onClick={() =>
-                  setIsDropdownOpenDental(!isDropdownOpenDental)
-                }
-              >
-                Dental
-                <RiArrowDropDownLine
-                  className={`text-xl transition-transform ${
-                    isDropdownOpenDental ? "rotate-180" : "rotate-0"
-                  }`}
-                />
-              </button>
-              {isDropdownOpenDental && (
-                <div className="pl-4">
-                  <Link
-                    to="/dental/government"
-                    className="block py-1 text-gray-600"
-                  >
-                    Govt Colleges
-                  </Link>
-                  <Link
-                    to="/dental/private"
-                    className="block py-1 text-gray-600"
-                  >
-                    Private Colleges
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* 📱 Mobile Pharma Dropdown */}
-            <div>
-              <button
-                className="flex justify-between items-center w-full py-2 hover:text-blue-500"
-                onClick={() =>
-                  setIsDropdownOpenPharma(!isDropdownOpenPharma)
-                }
-              >
-                Pharma
-                <RiArrowDropDownLine
-                  className={`text-xl transition-transform ${
-                    isDropdownOpenPharma ? "rotate-180" : "rotate-0"
-                  }`}
-                />
-              </button>
-              {isDropdownOpenPharma && (
-                <div className="pl-4">
-                  <Link
-                    to="/pharma/government"
-                    className="block py-1 text-gray-600"
-                  >
-                    Govt Colleges
-                  </Link>
-                  <Link
-                    to="/pharma/private"
-                    className="block py-1 text-gray-600"
-                  >
-                    Private Colleges
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* 📱 Mobile Sign In / Sign Up */}
-            <div className="flex flex-col space-y-2 pt-4">
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+            <div className="border-t pt-3 mt-3">
               <Link
-                to="/signin"
-                className="border bg-[rgb(9,30,68)] text-white px-4 py-2 rounded-lg text-center hover:bg-blue-900 transition"
+                to="/login"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                onClick={() => setIsOpen(false)}
               >
-                Sign In
+                Login
               </Link>
               <Link
-                to="/signup"
-                className="bg-[rgb(223,225,230)] text-black px-4 py-2 rounded-lg text-center hover:bg-gray-300 transition"
+                to="/register"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                onClick={() => setIsOpen(false)}
               >
                 Sign Up
+              </Link>
+              <Link
+                to="/profile"
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                onClick={() => setIsOpen(false)}
+              >
+                <FiUser className="h-4 w-4" />
+                <span>Profile</span>
               </Link>
             </div>
           </div>
