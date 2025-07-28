@@ -2,9 +2,9 @@ import React from "react";
 
 const CareerSection = () => {
   return (
-    <div className="bg-[rgb(44,225,269)] w-full py-10 px-6">
+    <div className="bg-[rgb(242,244,245)] w-full py-10 px-6">
       {/* Title */}
-      <div className="px-4 lg:px-12">
+      <div className="ml-20 px-4 lg:px-12">
         <h1 className="text-4xl font-bold">Explore Careers</h1>
         <p className="text-gray-700 mt-3 text-lg">
           Explore your preferred streams to learn about the relevant <br />
@@ -13,7 +13,7 @@ const CareerSection = () => {
       </div>
 
       {/* Cards */}
-      <div className="mt-10 flex flex-col lg:flex-row items-center justify-between gap-6 px-4 lg:px-8">
+      <div className="mt-20 ml-24 flex flex-col lg:flex-row items-center justify-between gap-6 px-4 lg:px-8">
         {/* Card 1 */}
         <div className="bg-white rounded-xl w-full lg:w-[30%] shadow-md hover:shadow-lg transition p-6">
           <h2 className="text-2xl font-bold mb-4 text-center">
@@ -51,7 +51,7 @@ const CareerSection = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white rounded-xl w-full lg:w-[30%] shadow-md hover:shadow-lg transition p-6">
+        <div className="bg-white rounded-xl mr-24 w-full lg:w-[30%] shadow-md hover:shadow-lg transition p-6">
           <h2 className="text-2xl font-bold  mb-4 text-center">
             Top Courses to Study
           </h2>

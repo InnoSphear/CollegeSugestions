@@ -5,6 +5,7 @@ import HomePage from './Pages/HomePage'
 import Footer from './components/Footer'
 import MedicalTopTenGov from './Pages/MedicalTopTenGov'
 import MedicalTopTenPvt from './Pages/MedicalTopTenPvt'
+import CollegeProfile from './Pages/CollegeProfile'
 
 
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/' element={<HomePage/>} />
         <Route path='/toptengov' element={<MedicalTopTenGov/>}/>
         <Route path='/toptenpvt' element={<MedicalTopTenPvt/>}/>
+        <Route path='/college/:collegeSlug' element={<CollegeProfile/>}/>
         
       </Routes>
       <Footer/>

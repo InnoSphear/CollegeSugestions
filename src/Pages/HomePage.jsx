@@ -6,7 +6,7 @@ import CareerSection from "../components/CareerSection";
 const HomePage = () => {
   return (
     <>
-    <section className="bg-[rgb(42,144,195)] mt-20 w-full">
+    <section className="bg-[rgb(230,232,236)] mt-20 w-full">
       <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-10 lg:py-16">
 
         {/* ✅ LEFT SECTION */}
@@ -36,7 +36,7 @@ const HomePage = () => {
         </div>
 
         {/* ✅ RIGHT SECTION (Image) */}
-        <div className="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0">
+        <div className=" w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0">
           <img
             className="w-[70%] sm:w-[300px] md:w-[400px] lg:w-[480px] xl:w-[520px] object-contain"
             src="https://png.pngtree.com/png-vector/20240309/ourmid/pngtree-medical-student-vector-concept-black-illustration-png-image_11905027.png"

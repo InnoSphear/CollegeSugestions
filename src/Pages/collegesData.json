@@ -1,0 +1,80 @@
+{
+  "colleges": [
+    {
+      "id": 1,
+      "name": "All India Institute of Medical Sciences, New Delhi",
+      "slug": "all-india-institute-of-medical-sciences-new-delhi",
+      "ownership": "Government",
+      "established": "1956",
+      "state": "Delhi",
+      "city": "New Delhi",
+      "category": "Medical",
+      "courses": ["MBBS", "MD", "MS", "MSc", "MDS", "MCh", "DM", "PhD"],
+      "logo": "https://www.aiimsraipur.edu.in/images/lg1.png",
+      "overview": "The All India Institute of Medical Science, Delhi (AIIMS Delhi) is a public medical research university in New Delhi, India. The AIIMS was finally established in 1956 as an independent institution by an Act of Parliament, similar to the foundation for domestic machines across the broad industries. The AIIMS remains best.",
+      "coursesAndFees": [
+        {
+          "name": "MBBS",
+          "duration": "5 Years",
+          "totalFees": "₹7,640",
+          "seats": 132,
+          "level": "UG"
+        },
+        {
+          "name": "Pathology",
+          "duration": "3 Years",
+          "totalFees": "₹2,110",
+          "seats": 31,
+          "level": "PG"
+        }
+      ],
+      "placements": {
+        "averagePackage": "₹6-7 LPA",
+        "graduationPercentage": {
+          "ug": [95, 96, 94, 93],
+          "pg": [93.15, 94.50, 93.84, 93.18],
+          "years": [2019, 2020, 2021, 2022]
+        }
+      },
+      "amenities": ["Library", "Hostel", "Sports", "Hospital", "Labs"],
+      "cutoff": {
+        "mbbs": "98.5 percentile",
+        "md": "95 percentile"
+      },
+      "faculty": {
+        "total": 450,
+        "studentRatio": "1:8"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Post Graduate Institute Of Medical Education And Research And Capital Hospital",
+      "slug": "post-graduate-institute-of-medical-education-and-research-and-capital-hospital",
+      "ownership": "Government",
+      "established": "1954",
+      "state": "Chandigarh",
+      "city": "Chandigarh",
+      "category": "Medical",
+      "courses": ["MBBS", "MD", "MS"],
+      "logo": "https://upload.wikimedia.org/wikipedia/en/a/a3/Postgraduate_Institute_of_Medical_Education_and_Research_Logo.png",
+      "overview": "PGIMER is a premier medical and research institution in India.",
+      "coursesAndFees": [
+        {
+          "name": "MBBS",
+          "duration": "5 Years",
+          "totalFees": "₹15,000",
+          "seats": 100,
+          "level": "UG"
+        }
+      ],
+      "placements": {
+        "averagePackage": "₹5-6 LPA",
+        "graduationPercentage": {
+          "ug": [92, 93, 94, 95],
+          "pg": [91, 92, 93, 94],
+          "years": [2019, 2020, 2021, 2022]
+        }
+      }
+    }
+  ]
+}
