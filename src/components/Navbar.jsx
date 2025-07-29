@@ -50,7 +50,7 @@ const Navbar = () => {
             {isDropdownOpen && (
               <div className="absolute top-full left-0 mt-2 w-72 bg-white shadow-lg rounded-md border border-gray-200 z-50">
                 <Link
-                  to="/toptengov"
+                  to="/medical/government"
                   className="block px-4 py-2 hover:bg-blue-100 transition"
                 >
                   Top 10 Government Colleges in India
