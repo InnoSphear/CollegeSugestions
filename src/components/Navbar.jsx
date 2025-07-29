@@ -56,7 +56,7 @@ const Navbar = () => {
                   Top 10 Government Colleges in India
                 </Link>
                 <Link
-                  to="/toptenpvt"
+                  to="/medical/government"
                   className="block px-4 py-2 hover:bg-blue-100 transition"
                 >
                   Top 10 Private Colleges in India
